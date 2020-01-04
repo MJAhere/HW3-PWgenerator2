@@ -1,5 +1,4 @@
 // Charecters to be used in the password. User will have ability to select which charecters.
-console.log(helloWorld)
 var specChar = [
     "@",
     "%",
@@ -32,15 +31,15 @@ var numChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 var lowLetters = ["a", "b", "c", "d", "e", "f", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-//Here the user will be able to decide which charecters he/she would like to use in their password.
+//Here the user will be able to decide length and which charecters he/she would like to use in their password.
 
-function passwordChoices() {
+function getPasswordChoices() {
     var length = parseInt(prompt(
         "How long would you prefer your password to be?"
     ));
 
     if (isNaN(length) === true) {
-        alert("Password length must be provided as a number");
+        alert("Password length must be a number");
         return;
     };
 
@@ -54,19 +53,19 @@ function passwordChoices() {
         return;
     };
 
-    var hasNumChar = confirm(
+    var hasSpecChar = confirm(
         "Click ok to use numbers."
     );
 
-    var hasLowChar = confirm(
+    var hasCapLetters = confirm(
         "Click ok to use lowercase letters."
     );
 
-    var hasCapLetters = confirm(
+    var hasNumChar = confirm(
         "Click ok to use uppercase letters."
     );
 
-    var hasSpecChar = confirm(
+    var hasLowLetters = confirm(
         "Click ok to use special charecters."
     );
 
@@ -76,7 +75,7 @@ function passwordChoices() {
         hasSpecChar === false &&
         hasCapLetters === false &&
         hasNumChar === false &&
-        hasLowChar === false
+        hasLowLetters === false
 
     ) {
         alert("You have to select atleast one charecter set.")
@@ -90,7 +89,7 @@ function passwordChoices() {
         hasSpecChar: hasSpecChar,
         hasCapLetters: hasCapLetters,
         hasNumChar: hasNumChar,
-        hasLowChar: hasLowChar
+        hasLowLetters: hasLowLetters
     };
 
     return passwordChoices;
@@ -100,44 +99,44 @@ function passwordChoices() {
 //This is the function to gen a random pw. 
 
 function genRandom(arr) {
-    var ranIndex = Math.floor(Math.random() * arr.length);
-    var ranElement = arr[ranIndex];
+    var randIndex = Math.floor(Math.random() * arr.length);
+    var randElement = arr[randIndex];
   
-    return ranElement;
+    return randElement;
   }
   
 //Password will be generated using the users input.
 
 function generatePassword() {
-    var choices = getPasswordChoices();
+    var options = getPasswordChoices();
 
-    var result = []
+    var result = [];
 
     var possibleChoices = [];
 
     var setChoices = [];
 
-    if (choices.hasSpecChar) {
+    if (options.hasSpecChar){
         possibleChoices = possibleChoices.concat(specChar);
         setChoices.push(genRandom(specChar));
     }
 
-    if (choices.hasCapLetters) {
+    if (options.hasCapLetters) {
         possibleChoices = possibleChoices.concat(capLetters);
-        setChoices.push(genRandom(numChar));
+        setChoices.push(genRandom(capLetters));
     }
 
-    if (choices.hasNumChar) {
+    if (options.hasNumChar) {
         possibleChoices = possibleChoices.concat(numChar);
         setChoices.push(genRandom(numChar));
     }
 
-    if (choices.hasLowChar) {
+    if (options.hasCapLetters) {
         possibleChoices = possibleChoices.concat(lowLetters)
         setChoices.push(genRandom(lowLetters));
     }
 
-    for(var i = 0; i < choices.length; i++) {
+    for(var i = 0; i < options.length; i++) {
         var possibleChoices = genRandom(possibleChoices);
 
         result.push(possibleChoices);
@@ -148,7 +147,7 @@ function generatePassword() {
     }
 
     return result.join("");
-
+ 
 }
 //copy and gen button
 var copyBtn = document.querySelector("#copy");
@@ -157,24 +156,24 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
-
+  
     passwordText.value = password;
-
-    copyBtn.removeAttribute ("disabled");
+  
+    copyBtn.removeAttribute("disabled");
     copyBtn.focus();
-}
-
+  }
+  
 function copyToClipboard() {
     var passwordText = document.querySelector("#password");
-
+  
     passwordText.select();
     document.execCommand("copy");
-
+  
     alert(
-        "Your password " + passwordText.value + " was copied to clipboard."
-
+      "Your password " + passwordText.value + " was copied to your clipboard."
     );
-}
+  }
+  
 
 //adding event listener for gen button.
 generateBtn.addEventListener("click", writePassword);
