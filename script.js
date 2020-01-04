@@ -106,4 +106,49 @@ function genRandom(arr) {
     return ranElement;
   }
   
+//Password will be generated using the users input.
+
+function generatePassword() {
+    var choices = getPasswordChoices();
+
+    var result = []
+
+    var possibleChoices = [];
+
+    var setChoices = [];
+
+    if (choices.hasSpecChar) {
+        possibleChoices = possibleChoices.concat(specChar);
+        setChoices.push(genRandom(specChar));
+    }
+
+    if (choices.hasCapLetters) {
+        possibleChoices = possibleChoices.concat(capLetters);
+        setChoices.push(genRandom(numChar));
+    }
+
+    if (choices.hasNumChar) {
+        possibleChoices = possibleChoices.concat(numChar);
+        setChoices.push(genRandom(numChar));
+    }
+
+    if (choices.hasLowChar) {
+        possibleChoices = possibleChoices.concat(lowLetters)
+        setChoices.push(genRandom(lowLetters));
+    }
+
+    for(var i = 0; i < choices.length; i++) {
+        var possibleChoices = genRandom(possibleChoices);
+
+        result.push(possibleChoices);
+    }
+
+    for(var i = 0; i < setChoices.length; i++) {
+        result[i] = setChoices[i];
+    }
+
+    return result.join("");
+
+}
+
 
