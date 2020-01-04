@@ -94,4 +94,16 @@ function passwordChoices() {
     };
 
     return passwordChoices;
+
 };
+
+//This is the function to gen a random pw. 
+
+function genRandom(arr) {
+    var ranIndex = Math.floor(Math.random() * arr.length);
+    var ranElement = arr[ranIndex];
+  
+    return ranElement;
+  }
+  
+
