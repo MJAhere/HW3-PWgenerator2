@@ -1,5 +1,5 @@
 // Charecters to be used in the password. User will have ability to select which charecters.
-
+console.log(helloWorld)
 var specChar = [
     "@",
     "%",
@@ -150,5 +150,37 @@ function generatePassword() {
     return result.join("");
 
 }
+//copy and gen button
+var copyBtn = document.querySelector("#copy");
+var generateBtn = document.querySelector("#generate");
+
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
+
+    copyBtn.removeAttribute ("disabled");
+    copyBtn.focus();
+}
+
+function copyToClipboard() {
+    var passwordText = document.querySelector("#password");
+
+    passwordText.select();
+    document.execCommand("copy");
+
+    alert(
+        "Your password " + passwordText.value + " was copied to clipboard."
+
+    );
+}
+
+//adding event listener for gen button.
+generateBtn.addEventListener("click", writePassword);
+
+copyBtn.addEventListener("click", copyToClipboard);
+
+    
 
 
