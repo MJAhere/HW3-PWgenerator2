@@ -36,20 +36,40 @@ function passwordChoices() {
     var length = parseInt(prompt(
         "How long would you prefer your password to be?"
     ));
-}
+};
 
 if (isNaN(length) === true) {
     alert("Password length must be provided as a number");
     return;
-}
+};
 
 if (length < 8) {
     alert("Password length needs to be atleast 8 charecters");
     return;
-}
+};
 
 if (length > 128) {
     alert("Password length needs to be less than 129 charecters");
     return;
-}
+};
+
+var hasNumChar = confirm(
+    "Click ok to use numbers."
+);
+
+var hasLowChar = confirm(
+    "Click ok to use lowercase letters."
+);
+
+var hasCapLetters = confirm(
+    "Click ok to use uppercase letters."
+);
+
+var hasSpecChar = confirm(
+    "Click ok to use special charecters."
+);
+
+
+
+
 
