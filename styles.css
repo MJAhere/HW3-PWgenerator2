@@ -28,3 +28,48 @@ header {
   padding: 30px 40px;
 }
 
+#password {
+  width: 100%;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: -20px;
+  padding-bottom: 85px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px dashed #c0c7cf;
+  border-radius: 6px;
+  resize: none;
+  overflow: hidden;
+}
+
+button[disabled] {
+  cursor: default;
+  background: gray;
+}
+
+.float-right {
+  float: right;
+}
+
+.btn {
+  border: none;
+  background-color: red;
+  border-radius: 25px;
+  color: white;
+  display: inline-block;
+  font-size: 22px;
+  margin: 15px 15px 15px 20px;
+  box-shadow: black;
+  line-height: 20px;
+  padding: 15px 35px;
+  text-align: center;
+  
+}
+
+
+  
+  
+  
+  
