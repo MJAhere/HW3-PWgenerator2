@@ -1,6 +1,8 @@
 # HW3-PWgenerator2
 Creating a random password generator using JS.
 
+- Launch Application [Here](https://mjahere.github.io/Password-Generator/)
+
 ## Landing Page
 - Here you will see a box with a red button asking to "Please Generate Password". Once clicked you will be asked through a few prompts on what charecters to use in your password. You may choose from capital, lower case, special charecters, numbers, or, length. 
 
