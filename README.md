@@ -1,4 +1,4 @@
-# HW3-PWgenerator2
+# Password Generator
 Creating a random password generator using JS.
 
 - Launch Application [Here](https://mjahere.github.io/Password-Generator/)
